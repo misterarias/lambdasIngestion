@@ -1,0 +1,9 @@
+---
+version: '2'
+services:
+    dynamodb:
+        build: ./dynamodb_local/
+        expose:
+            - "8000"
+        ports:
+            - "8000:8000"

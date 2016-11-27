@@ -1,0 +1,11 @@
+#!/bin/bash
+export AWS_REGION="us-east-1"
+export AWS_ACCESS_KEY_ID="123456789"
+export AWS_SECRET_ACCESS_KEY="supersecret"
+SCRIPTDIR=$(cd $(dirname $0) && pwd)
+BASEDIR=$(cd $SCRIPTDIR/.. && pwd)
+LAMBDADIR=$(cd "$BASEDIR/../../node_modules/lambda-local/bin/" && pwd)
+EVENT_FILE="${BASEDIR}/events/request_events.js"
+EVENT_CODE="${BASEDIR}/code/request_events.js"
+
+"$LAMBDADIR/lambda-local" -l "$EVENT_CODE" -e "$EVENT_FILE" # | xargs | grep -o "{.*}"  | sed -e 's/\([a-zA-Z_]\+\)/\"\1\"/g'

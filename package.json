@@ -1,0 +1,15 @@
+{
+  "name": "lambdas",
+  "version": "0.0.1",
+  "scripts" : {
+    "start": "docker-compose -f devops/docker/docker-compose.yml up -d",
+    "stop": "docker-compose -f devops/docker/docker-compose.yml down",
+    "create_table" : "./functions/PutEvents/scripts/create_table",
+    "put_events" : "./functions/PutEvents/scripts/put_event",
+    "request_events" : "./functions/RequestEvents/scripts/request_events"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1.6",
+    "lambda-local": "0.0.6"
+  }
+}
