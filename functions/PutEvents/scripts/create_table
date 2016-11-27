@@ -8,4 +8,4 @@ LAMBDADIR=$(cd "$BASEDIR/../../node_modules/lambda-local/bin/" && pwd)
 EVENT_FILE="${BASEDIR}/events/create_table.js"
 EVENT_CODE="${BASEDIR}/code/create_table.js"
 
-"$LAMBDADIR/lambda-local" -l "$EVENT_CODE" -e "$EVENT_FILE"
+"$LAMBDADIR/lambda-local" -l "$EVENT_CODE" -e "$EVENT_FILE" > /dev/null

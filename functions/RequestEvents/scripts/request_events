@@ -7,5 +7,8 @@ BASEDIR=$(cd $SCRIPTDIR/.. && pwd)
 LAMBDADIR=$(cd "$BASEDIR/../../node_modules/lambda-local/bin/" && pwd)
 EVENT_FILE="${BASEDIR}/events/request_events.js"
 EVENT_CODE="${BASEDIR}/code/request_events.js"
+EVENT_LOG_FILE="events.log"
 
-"$LAMBDADIR/lambda-local" -l "$EVENT_CODE" -e "$EVENT_FILE" # | xargs | grep -o "{.*}"  | sed -e 's/\([a-zA-Z_]\+\)/\"\1\"/g'
+"$LAMBDADIR/lambda-local" -l "$EVENT_CODE" -e "$EVENT_FILE" >  "${EVENT_LOG_FILE}"
+N_MESSAGES=$(grep -o 'Count: [0-9]\+' ${EVENT_LOG_FILE} | awk '{print $2}')
+echo "Read '${N_MESSAGES}' messages"

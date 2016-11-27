@@ -6,7 +6,9 @@
     "stop": "docker-compose -f devops/docker/docker-compose.yml down",
     "create_table" : "./functions/PutEvents/scripts/create_table",
     "put_events" : "./functions/PutEvents/scripts/put_event",
-    "request_events" : "./functions/RequestEvents/scripts/request_events"
+    "request_events" : "./functions/RequestEvents/scripts/request_events",
+    "test" : "./functions/PutEvents/scripts/create_table && ./functions/PutEvents/scripts/put_event && ./functions/RequestEvents/scripts/request_events"
+
   },
   "dependencies": {
     "aws-sdk": "^2.1.6",
