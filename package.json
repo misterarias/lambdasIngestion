@@ -7,6 +7,7 @@
     "create_table" : "./functions/PutEvents/scripts/create_table",
     "put_events" : "./functions/PutEvents/scripts/put_event",
     "request_events" : "./functions/RequestEvents/scripts/request_events",
+    "register" : "./functions/Register/scripts/local.sh",
     "test" : "./functions/PutEvents/scripts/create_table && ./functions/PutEvents/scripts/put_event && ./functions/RequestEvents/scripts/request_events"
 
   },

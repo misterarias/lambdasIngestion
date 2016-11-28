@@ -1,0 +1,4 @@
+requests
+redis
+urllib3
+python-lambda-local

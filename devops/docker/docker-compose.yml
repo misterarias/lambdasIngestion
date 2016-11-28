@@ -4,6 +4,50 @@ services:
     dynamodb:
         build: ./dynamodb_local/
         expose:
-            - "8000"
+            - 8000
         ports:
-            - "8000:8000"
+            - 8000:8000
+
+    mock_server:
+        build: ./mock_server/image/
+        volumes:
+            - ./mock_server/server:/opt/flask/
+        expose:
+            - 8080
+        ports:
+            - 8080:80
+
+    redis:
+        build: ./redis
+        expose:
+            - 6379
+        ports:
+            - 6379:6379
+        volumes:
+            - redis-data:/var/lib/redis
+        command:
+            - ./start.sh
+        networks:
+            - backend
+            - frontend
+
+# This should create a data volume to be shared
+volumes:
+    redis-data:
+        driver: local
+
+networks:
+    backend:
+        driver: bridge
+        ipam:
+            driver: default
+            # config:
+            #    - subnet: 172.16.0.0/20
+            #     gateway: 172.16.0.1
+    frontend:
+        driver: bridge
+        ipam:
+            driver: default
+            # config:
+            #    - subnet: 10.0.0.0/20
+            #      gateway: 10.0.0.1
